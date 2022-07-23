@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 
+//this is the constructor- assiging objects to the state
 const CreateExercise = () => {
   const [Exericse, setExericse] = useState({
     username: "helllo",
@@ -11,26 +12,20 @@ const CreateExercise = () => {
     date: new Date(),
   });
 
-  const [Users, setUsers] = useState([])
+  const [Users, setUsers] = useState([]);
 
   const onSubmit = () => {
-    axios
-      .post("http://localhost:5000/exercises/add", Exericse)
+    axios.post("http://localhost:5000/exercises/add", Exericse);
   };
 
-  useEffect( () => {
-     axios
-      .get("http://localhost:5000/users")
-      .then(res => {
-        res.data.map(user => {
-          setUsers(oldArray => [...oldArray, user.username])
-          return 0;
-        })
-      })
-
-      
+  useEffect(() => {
+    axios.get("http://localhost:5000/users").then((res) => {
+      res.data.map((user) => {
+        setUsers((oldArray) => [...oldArray, user.username]);
+        return 0;
+      });
+    });
   }, []);
-
 
   return (
     <div>

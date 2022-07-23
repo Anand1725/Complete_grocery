@@ -23,7 +23,7 @@ const Navbar = () => {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/">
-                Exercises
+                Exercises List
               </Link>
             </li>
             <li className="nav-item">
@@ -31,9 +31,30 @@ const Navbar = () => {
                 Create Exercise Log
               </Link>
             </li>
+            {/* added users list by Arun */}
+            <li className="nav-item">
+              <Link className="nav-link" to="/userlist">
+                Users List
+              </Link>
+            </li>
             <li className="nav-item">
               <Link className="nav-link" to="/user">
                 Create User
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/productslist">
+                Products list
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/productcreate">
+                Add Product
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/storeordercreate">
+                Add StoreOrder
               </Link>
             </li>
           </ul>
