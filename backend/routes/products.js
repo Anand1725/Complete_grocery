@@ -15,7 +15,8 @@ router.route("/add").post((req, res) => {
   const skuid = req.body.skuid;
   const product = req.body.product;
   const origin = req.body.origin;
-  const price = req.body.price;
+  // -----Omkar  convert into Number
+  const price = Number(req.body.price);
   const isActive = req.body.isActive;
   const datetime = Date.parse(req.body.datetime);
 
