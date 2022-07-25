@@ -45,20 +45,30 @@ const StoreorderList = () => {
         </thead>
         <tbody>
           {StoreorderData.map((storedata, index) => (
-            <tr key={index}>
-              <td>{storedata.skuid}</td>
-              <td>{storedata.product}</td>
-              <td>{storedata.origin}</td>
-              <td>{storedata.price}</td>
-              <td>{storedata.StoreOrderDetails[0].currQty}</td>
-              <td></td>
-              <td></td>
-              <td>{storedata.datetime.substring(0, 10)}</td>
-              <td></td>
-              <td></td>
-            </tr>
+
+            //-----Omkar for add text box
+          <tr key={index}>
+          <td>{storedata.skuid}</td>
+          <td>{storedata.product}</td>
+          <td>{storedata.origin}</td>
+          <td>{storedata.price}</td>
+{/* {console.log(storedata.StoreOrderDetails)} */}
+          <td><input type='Number' value={storedata.StoreOrderDetails[0]?.currQty ? storedata.StoreOrderDetails[0]?.currQty:0 } readOnly></input> </td>
+          <td><input type='Number' value={storedata.StoreOrderDetails[0]?.newQty ? storedata.StoreOrderDetails[0]?.newQty :0 } readOnly></input></td>
+          <td>{storedata.StoreOrderDetails[0]?.subBy}</td>
+          <td>{storedata.datetime.substring(0, 10)}</td>
+          <td>{storedata.StoreOrderDetails.storeName}</td>
+          <td>{storedata.StoreOrderDetails[0]?.cityName}</td>
+
+          {/* <td>{storedata.StoreOrderDetails["currQty"]}</td>
+          <td>{storedata.StoreOrderDetails.newQty}</td>
+          <td>{storedata.StoreOrderDetails.suBy}</td>
+          <td>{storedata.datetime.substring(0, 10)}</td>
+          <td>{storedata.StoreOrderDetails.storeName}</td>
+          <td>{storedata.StoreOrderDetails.cityName}</td> */}
+        </tr>
           ))}
-          .
+          
         </tbody>
       </table>
     </div>
