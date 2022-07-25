@@ -27,7 +27,7 @@ const StoreorderList = () => {
   }; */
   return (
     <div>
-      <h3>Product List</h3>
+      <h3>Storeorder List</h3>
       <table className="table">
         <thead className="thead-light">
           <tr>
@@ -35,7 +35,7 @@ const StoreorderList = () => {
             <th>product</th>
             <th>origin</th>
             <th>price</th>
-            <th>price</th>
+            <th>storeorder_id</th>
             <th>price</th>
             <th>price</th>
             <th>price</th>
@@ -50,14 +50,15 @@ const StoreorderList = () => {
               <td>{storedata.product}</td>
               <td>{storedata.origin}</td>
               <td>{storedata.price}</td>
-              <td>{storedata.StoreOrderDetails["currQty"]}</td>
-              <td>{storedata.StoreOrderDetails.newQty}</td>
-              <td>{storedata.StoreOrderDetails.suBy}</td>
+              <td>{storedata.StoreOrderDetails[0].currQty}</td>
+              <td></td>
+              <td></td>
               <td>{storedata.datetime.substring(0, 10)}</td>
-              <td>{storedata.StoreOrderDetails.storeName}</td>
-              <td>{storedata.StoreOrderDetails.cityName}</td>
+              <td></td>
+              <td></td>
             </tr>
           ))}
+          .
         </tbody>
       </table>
     </div>
