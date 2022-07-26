@@ -1,6 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
+//this mongoose debug code, comment it later
 mongoose.set("debug", true);
+//You can use the following format:
+mongoose.set("debug", (collectionName, method, query, doc) => {
+  console.log(`${collectionName}.${method}`, JSON.stringify(query), doc);
+});
 const cors = require("cors");
 
 const exercisesRouter = require("./routes/exercises");

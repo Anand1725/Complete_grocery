@@ -9,6 +9,7 @@ const productSchema = new Schema(
     product: { type: String, required: true },
     origin: { type: String, required: true },
     price: { type: Number, required: true },
+    uom: { type: String, required: true },
     isActive: { type: Boolean, required: true },
     datetime: { type: Date, required: true },
   },

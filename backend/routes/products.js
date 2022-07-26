@@ -17,6 +17,7 @@ router.route("/add").post((req, res) => {
   const origin = req.body.origin;
   // -----Omkar  convert into Number
   const price = Number(req.body.price);
+  const uom = req.body.uom;
   const isActive = req.body.isActive;
   const datetime = Date.parse(req.body.datetime);
 
@@ -30,6 +31,7 @@ router.route("/add").post((req, res) => {
     product,
     origin,
     price,
+    uom,
     isActive,
     datetime,
   });
@@ -61,6 +63,7 @@ router.route("/update/:id").post((req, res) => {
   const product = req.body.product;
   const origin = req.body.origin;
   const price = req.body.price;
+  const uom = req.body.uom;
   const isActive = req.body.isActive;
   const datetime = Date.parse(req.body.datetime);
 
@@ -71,6 +74,7 @@ router.route("/update/:id").post((req, res) => {
       product: product,
       origin: origin,
       price: price,
+      uom: uom,
       isActive: isActive,
       datetime: datetime,
     },
