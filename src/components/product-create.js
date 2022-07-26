@@ -18,6 +18,7 @@ const CreateProduct = () => {
     product: "",
     origin: "",
     price: 0,
+    uom: "",
     isActive: true,
     datetime: new Date(),
 
@@ -53,7 +54,7 @@ const CreateProduct = () => {
  */
   return (
     <div>
-      <h3>Create New Product </h3>
+      <h3>Add New Product </h3>
       <form onSubmit={onSubmit}>
         {/*  <div className="form-group">
           <label>Username: </label>
@@ -82,7 +83,7 @@ const CreateProduct = () => {
         </div>
  */}
         <div className="form-group">
-          <label>skuid: </label>
+          <label>Skuid: </label>
           <input
             type="text"
             required
@@ -92,7 +93,7 @@ const CreateProduct = () => {
           />
         </div>
         <div className="form-group">
-          <label>product: </label>
+          <label>Product: </label>
           <input
             type="text"
             required
@@ -104,7 +105,7 @@ const CreateProduct = () => {
           />
         </div>
         <div className="form-group">
-          <label>origin: </label>
+          <label>Origin: </label>
           <input
             type="text"
             required
@@ -114,12 +115,21 @@ const CreateProduct = () => {
           />
         </div>
         <div className="form-group">
-          <label>price (in numbers): </label>
+          <label>Price (in numbers): </label>
           <input
             type="text"
             className="form-control"
             value={Product.price}
             onChange={(e) => setProduct({ ...Product, price: e.target.value })}
+          />
+        </div>
+        <div className="form-group">
+          <label>UOM (Palletes): </label>
+          <input
+            type="text"
+            className="form-control"
+            value={Product.uom}
+            onChange={(e) => setProduct({ ...Product, uom: e.target.value })}
           />
         </div>
 
@@ -146,7 +156,7 @@ const CreateProduct = () => {
         <div className="form-group">
           <input
             type="submit"
-            value="Create Product"
+            value="Add Product"
             className="btn btn-primary"
           />
         </div>

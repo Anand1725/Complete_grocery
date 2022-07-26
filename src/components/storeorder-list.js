@@ -8,7 +8,7 @@ const StoreorderListshow = () => {
   useEffect(() => {
     axios.get("http://localhost:5000/storeorder/").then((response) => {
       response.data.map((storedata) => {
-        console.log(storedata.StoreOrderDetails)
+        console.log(storedata.StoreOrderDetails);
         setData((oldArray) => [...oldArray, storedata]);
         return 0;
       });
@@ -38,23 +38,32 @@ const StoreorderListshow = () => {
             <th>price</th>
             <th>Store current Qty</th>
             <th>Store new Qty</th>
-            <th>Store Suby</th>
-            <th>price</th>
+            <th>St currQty</th>
+            <th>St newOrQty</th>
+            <th>Sub By</th>
+            <th>Date Time</th>
             <th>price</th>
             <th>datetime</th>
           </tr>
         </thead>
         <tbody>
           {StoreorderData.map((storedata, index) => (
-           
             <tr key={index}>
               <td>{storedata.skuid}</td>
               <td>{storedata.product}</td>
               <td>{storedata.origin}</td>
               <td>{storedata.price}</td>
-{/* {console.log(storedata.StoreOrderDetails)} */}
-              <td>{storedata.StoreOrderDetails[0]?.currQty ? storedata.StoreOrderDetails[0]?.currQty:0 } </td>
-              <td>{storedata.StoreOrderDetails[0]?.newQty ? storedata.StoreOrderDetails[0]?.newQty :0 }</td>
+              {/* {console.log(storedata.StoreOrderDetails)} */}
+              <td>
+                {storedata.StoreOrderDetails[0]?.currQty
+                  ? storedata.StoreOrderDetails[0]?.currQty
+                  : 0}{" "}
+              </td>
+              <td>
+                {storedata.StoreOrderDetails[0]?.newQty
+                  ? storedata.StoreOrderDetails[0]?.newQty
+                  : 0}
+              </td>
               <td>{storedata.StoreOrderDetails[0]?.subBy}</td>
               <td>{storedata.datetime.substring(0, 10)}</td>
               <td>{storedata.StoreOrderDetails.storeName}</td>

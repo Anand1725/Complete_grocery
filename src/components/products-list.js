@@ -31,11 +31,11 @@ const ProductList = () => {
       <table className="table">
         <thead className="thead-light">
           <tr>
-            <th>skuid</th>
-            <th>product</th>
-            <th>origin</th>
-            <th>price</th>
-
+            <th>Skuid</th>
+            <th>Product</th>
+            <th>Origin</th>
+            <th>Price</th>
+            <th>UOM</th>
             <th>datetime</th>
           </tr>
         </thead>
@@ -46,7 +46,7 @@ const ProductList = () => {
               <td>{data.product}</td>
               <td>{data.origin}</td>
               <td>{data.price}</td>
-
+              <th>{data.uom}</th>
               <td>{data.datetime.substring(0, 10)}</td>
             </tr>
           ))}
