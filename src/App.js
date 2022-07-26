@@ -8,6 +8,10 @@ import EditExercise from "./components/edit-exercise";
 import CreateExercise from "./components/create-exercise";
 import CreateUser from "./components/create-user";
 import StoreOrderCreate from "./components/storeorder-create";
+
+// ----------omkar importing StoreOrderCreatelist 
+import StoreOrderCreatelist from "./components/storeorder-list";
+
 import Navbar from "./components/navbar";
 
 function App() {
@@ -17,6 +21,9 @@ function App() {
       <div className="container">
         <br />
         <Route path="/" exact component={ExercisesList} />
+{/* --------omkar   Add store order list */}
+<Route path="/storeordercreatelist" component={StoreOrderCreatelist} />
+
         <Route path="/edit/:id" component={EditExercise} />
         <Route path="/create" component={CreateExercise} />
         <Route path="/user" component={CreateUser} />

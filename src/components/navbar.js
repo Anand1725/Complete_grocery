@@ -26,6 +26,13 @@ const Navbar = () => {
                 Exercises List
               </Link>
             </li>
+{/* -----omkar add storageorderlist To Nav bar */}
+<li className="nav-item">
+              <Link className="nav-link" to="/storeordercreatelist">
+                StoreOrder List
+              </Link>
+            </li>
+
             <li className="nav-item">
               <Link className="nav-link" to="/create">
                 Create Exercise Log
