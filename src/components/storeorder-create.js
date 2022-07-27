@@ -4,6 +4,7 @@ import axios from "axios";
 
 const StoreorderList = () => {
   const [StoreorderData, setData] = useState([]);
+  const [search, setsearch] = useState();
 
   useEffect(() => {
     axios.get("http://localhost:5000/storeorder/").then((response) => {
@@ -28,43 +29,64 @@ const StoreorderList = () => {
   }; */
   return (
     <div>
-      <h3>Add StoreOrder</h3>
+      <h3>Product List</h3>
+      {/* add input for serch product */}
+      <input
+        type="text"
+        placeholder="   Search By Product ....."
+        onChange={(e) => {
+          setsearch(e.target.value);
+        }}
+      ></input>
+      <label>Or</label>
+      <input
+        type="text"
+        placeholder="   Search By Skuid ....."
+        onChange={(e) => {
+          setsearch(e.target.value);
+        }}
+      ></input>
       <div className="form-group" style={{ float: "right" }}>
         <input
           type="submit"
-          value="Submit Store Order"
+          value="Create Exercise Log"
           className="btn btn-primary"
         />
       </div>
       <table className="table">
         <thead className="thead-light">
           <tr>
-            <th>Skuid</th>
-            <th>Product</th>
-            <th>Origin</th>
-            <th>Price</th>
-            <th>UOM</th>
-            <th>StCurrQty</th>
-            <th>StNewOrQty</th>
-            <th>SubBy</th>
-            <th>DateTime</th>
-            <th>StoreName</th>
-            <th>City</th>
+            <th>skuid</th>
+            <th>product</th>
+            <th>origin</th>
+            <th>price</th>
+            <th>Store current Qty</th>
+            <th>Store new Qty</th>
+            <th>Store Suby</th>
+            <th>price</th>
+            <th>price</th>
+            <th>datetime</th>
           </tr>
         </thead>
         <tbody>
-          {StoreorderData.map((storedata, index) => (
+          {StoreorderData.filter((val) => {
+            if (!search) return val;
+
+            if (
+              val.product.toLowerCase().includes(search.toLowerCase()) ||
+              val.skuid.toLowerCase().includes(search.toLowerCase())
+            )
+              return val;
+          }).map((storedata, index) => (
             <tr key={index}>
               <td>{storedata.skuid}</td>
               <td>{storedata.product}</td>
               <td>{storedata.origin}</td>
               <td>{storedata.price}</td>
-              <td>{storedata.uom}</td>
               {/* {console.log(storedata.StoreOrderDetails)} */}
               <td>
                 <input
                   type="Number"
-                  id="ex1"
                   value={
                     storedata.StoreOrderDetails[0]?.currQty
                       ? storedata.StoreOrderDetails[0]?.currQty
@@ -76,7 +98,6 @@ const StoreorderList = () => {
               <td>
                 <input
                   type="Number"
-                  id="ex1"
                   value={
                     storedata.StoreOrderDetails[0]?.newQty
                       ? storedata.StoreOrderDetails[0]?.newQty

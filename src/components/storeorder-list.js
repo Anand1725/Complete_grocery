@@ -4,6 +4,7 @@ import axios from "axios";
 
 const StoreorderListshow = () => {
   const [StoreorderData, setData] = useState([]);
+  const [search, setsearch] = useState("");
 
   useEffect(() => {
     axios.get("http://localhost:5000/storeorder/").then((response) => {
@@ -29,6 +30,15 @@ const StoreorderListshow = () => {
   return (
     <div>
       <h3>Product List</h3>
+      {/* add input for serch product */}
+      <input
+        type="text"
+        placeholder="Search By Product"
+        onChange={(e) => {
+          setsearch(e.target.value);
+        }}
+      ></input>
+
       <table className="table">
         <thead className="thead-light">
           <tr>
@@ -38,16 +48,20 @@ const StoreorderListshow = () => {
             <th>price</th>
             <th>Store current Qty</th>
             <th>Store new Qty</th>
-            <th>St currQty</th>
-            <th>St newOrQty</th>
-            <th>Sub By</th>
-            <th>Date Time</th>
+            <th>Store Suby</th>
+            <th>price</th>
             <th>price</th>
             <th>datetime</th>
           </tr>
         </thead>
         <tbody>
-          {StoreorderData.map((storedata, index) => (
+          {StoreorderData.filter((val) => {
+            // ------------------Add Filter for Search storeorder product by product name
+            if (!search) return val;
+            if (val.product.toLowerCase().includes(search.toLowerCase())) {
+              return val;
+            }
+          }).map((storedata, index) => (
             <tr key={index}>
               <td>{storedata.skuid}</td>
               <td>{storedata.product}</td>
