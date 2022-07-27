@@ -4,10 +4,11 @@ import axios from "axios";
 
 const ProductList = () => {
   const [Data, setData] = useState([]);
-
+  const [search,setsearch]=useState([]);
   useEffect(() => {
     axios.get("http://localhost:5000/products/").then((response) => {
       response.data.map((data) => {
+        console.log(data);
         setData((oldArray) => [...oldArray, data]);
         return 0;
       });
@@ -28,25 +29,40 @@ const ProductList = () => {
   return (
     <div>
       <h3>Product List</h3>
+      {/* add input for serch product */}
+      <input
+      type="text"
+      placeholder="Search By Product"
+      onChange={(e)=>{
+        setsearch(e.target.value);
+      }}
+      ></input>
       <table className="table">
         <thead className="thead-light">
           <tr>
-            <th>Skuid</th>
-            <th>Product</th>
-            <th>Origin</th>
-            <th>Price</th>
-            <th>UOM</th>
+            <th>skuid</th>
+            <th>product</th>
+            <th>origin</th>
+            <th>price</th>
+
             <th>datetime</th>
           </tr>
         </thead>
         <tbody>
-          {Data.map((data, index) => (
+          {Data.filter((val)=>{
+            // ------------------Add Filter for Search product by product by name
+            if(search==""){
+              return val;
+            }else if (val.product.toLowerCase().includes(search.toLowerCase())){
+              return val;
+            }
+          }).map((data, index) => (
             <tr key={index}>
               <td>{data.skuid}</td>
               <td>{data.product}</td>
               <td>{data.origin}</td>
               <td>{data.price}</td>
-              <th>{data.uom}</th>
+
               <td>{data.datetime.substring(0, 10)}</td>
             </tr>
           ))}
